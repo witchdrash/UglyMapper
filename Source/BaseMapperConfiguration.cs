@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UglyMapper.Exceptions;
 using UglyMapper.Interfaces;
 
 namespace UglyMapper

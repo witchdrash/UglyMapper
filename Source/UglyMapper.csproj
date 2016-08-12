@@ -45,11 +45,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseMapperConfiguration.cs" />
+    <Compile Include="Exceptions\InvalidMapperException.cs" />
+    <Compile Include="Exceptions\NoMappingExistsException.cs" />
     <Compile Include="Interfaces\IMappingAction.cs" />
-    <Compile Include="Interfaces\InvalidMapperException.cs" />
     <Compile Include="Interfaces\IUglyMapperConfiguration.cs" />
+    <Compile Include="Interfaces\IUglyMappingFactory.cs" />
     <Compile Include="MappingAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UglyMappingFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UglyMapper.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

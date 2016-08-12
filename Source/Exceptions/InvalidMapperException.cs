@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UglyMapper.Interfaces
+namespace UglyMapper.Exceptions
 {
     public class InvalidMapperException<TExpectedFrom, TExpectedTo, TFrom, TTo> : Exception
     {
