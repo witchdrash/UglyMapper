@@ -1,30 +1,30 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
-using Rhino.Mocks;
 using UglyMapper;
 using UglyMapper.Exceptions;
 using UglyMapper.Interfaces;
+using Xunit;
 
 namespace Tests
 {
-    [TestFixture]
     public class TestUglyMappingFactory
     {
-        [Test]
+        [Fact]
         public void WhenAMappingEngineExistsTheObjectIsMapped()
         {
-            var mock = MockRepository.GenerateMock<IUglyMapperConfiguration>();
-            mock.Stub(x => x.IsValid<int, string>()).Return(true);
-            mock.Stub(x => x.Map<int, string>(10)).Return("hello");
 
-            var classUnderTest = new UglyMappingFactory(new List<IUglyMapperConfiguration> { mock });
+            var mock = new Moq.Mock<IUglyMapperConfiguration>();
+            
+            mock.Setup(x => x.IsValid<int, string>()).Returns(true);
+            mock.Setup(x => x.Map<int, string>(10)).Returns("hello");
+
+            var classUnderTest = new UglyMappingFactory(new List<IUglyMapperConfiguration> { mock.Object });
 
             var result = classUnderTest.Map<int, string>(10);
 
-            Assert.AreEqual("hello", result);
+            Assert.Equal("hello", result);
         }
 
-        [Test]
+        [Fact]
         public void WhenAMappingDoesntExistNoMappingExistsExceptionIsThrown()
         {
             var classUnderTest = new UglyMappingFactory(new List<IUglyMapperConfiguration>());

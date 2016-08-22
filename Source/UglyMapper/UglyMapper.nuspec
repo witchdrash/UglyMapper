@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/witchdrash/UglyMapper</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added factory class that can choose the appropriate mapping configuration</releaseNotes>
+    <releaseNotes>Moved over to xproj and enabled dot net core</releaseNotes>
     <copyright>Copyright 2016</copyright>
   </metadata>
 </package>

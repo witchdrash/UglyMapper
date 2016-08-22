@@ -1,0 +1,19 @@
+{
+  "title": "Uglymapper",
+  "copyright": "UNLICENSE",
+  "version": "0.0.3-alpha",
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.0"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+	},
+	"net452": {
+	}
+  },
+  "runtimes": {
+    "win10-x64": { }
+  }
+}

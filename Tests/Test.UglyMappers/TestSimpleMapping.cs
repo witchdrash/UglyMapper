@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using System.Collections.Generic;
 using UglyMapper;
+using Xunit;
 
 namespace Tests
 {
@@ -26,10 +22,10 @@ namespace Tests
         }
     }
 
-    [TestFixture]
+    
     public class TestSimpleMapping 
     {
-        [Test]
+        [Fact]
         public void MapsCorrectly()
         {
             const string expected = "Stuff in here";
@@ -37,36 +33,35 @@ namespace Tests
 
             var classUnderTest = new SimpleMapperConfiguration();
             var result = classUnderTest.Map<SimpleFrom, SimpleTo>(simpleFrom);
-
-            Assert.AreEqual(expected, result.OutProperty);
+            Assert.Equal(expected, result.OutProperty);
         }
 
-        [Test]
+        [Fact]
         public void IsValidIsTrueWhenCorrectTypesAreChecked()
         {
             var classUnderTest = new SimpleMapperConfiguration();
-            Assert.IsTrue(classUnderTest.IsValid<SimpleFrom, SimpleTo>());
+            Assert.True(classUnderTest.IsValid<SimpleFrom, SimpleTo>());
         }
 
-        [Test]
+        [Fact]
         public void IsValidIsFalseWhenIncorrectTypesIsInTo()
         {
             var classUnderTest = new SimpleMapperConfiguration();
-            Assert.IsFalse(classUnderTest.IsValid<int, SimpleTo>());
+            Assert.False(classUnderTest.IsValid<int, SimpleTo>());
         }
 
-        [Test]
+        [Fact]
         public void IsValidIsFalseWhenIncorrectTypesIsInFrom()
         {
             var classUnderTest = new SimpleMapperConfiguration();
-            Assert.IsFalse(classUnderTest.IsValid<SimpleFrom, string>());
+            Assert.False(classUnderTest.IsValid<SimpleFrom, string>());
         }
 
-        [Test]
+        [Fact]
         public void IsValidIsFalseWhenIncorrectTypesIsInBoth()
         {
             var classUnderTest = new SimpleMapperConfiguration();
-            Assert.IsFalse(classUnderTest.IsValid<object, List<ContextBoundObject>>());
+            Assert.False(classUnderTest.IsValid<object, List<Assert>>());
         }
     }
 }
