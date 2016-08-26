@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UglyMapper;
+using UglyMapper.Exceptions;
 using Xunit;
 
 namespace Tests
@@ -61,6 +62,24 @@ namespace Tests
         {
             var classUnderTest = new SimpleMapperConfiguration();
             Assert.False(classUnderTest.IsValid<object, List<Assert>>());
+        }
+
+        [Fact]
+        public void WhenTryingToUseANestedMappingIfAFactoryClassIsNotUsedThenAnExceptionOfTypeUnsupportedNestedConfigurationExceptionIsThrown()
+        {
+            Assert.Throws<UnsupportedNestedConfigurationException>(() =>
+            {
+                var classUnderTest = new NestedMappingConfiguration();
+                classUnderTest.Map<SimpleTo, SimpleFrom>(new SimpleTo());
+            });
+        }
+    }
+
+    public class NestedMappingConfiguration : BaseMapperConfiguration<SimpleTo, SimpleFrom>
+    {
+        public NestedMappingConfiguration()
+        {
+            Map(x => x).To((y,z) => { y.InProperty = MappingFactory().Map<SimpleTo, SimpleFrom>(z).InProperty; });
         }
     }
 }

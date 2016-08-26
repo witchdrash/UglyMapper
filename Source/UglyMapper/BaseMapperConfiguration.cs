@@ -55,6 +55,9 @@ namespace UglyMapper
 
         protected IUglyMappingFactory MappingFactory()
         {
+            if (_mappingFactory == null)
+                throw new UnsupportedNestedConfigurationException();
+
             return _mappingFactory;
         }
     }

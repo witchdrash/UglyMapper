@@ -14,8 +14,9 @@ This will instantiate the object using a parameterless constructor.
 I will probably extend this further, when I need to use constructors with parameters, or to nest configurations.
 
 ##Factory Class
-When instantiated the factory class needs to be provided with a list of mapping configurations, from there the mapping class can be used to to map, when called it will map, if it knows how to, otherwise an exception of type `NoMappingExistsException` will be thrown.
-When using the factory class it's very easy to use nested mapping classes.
+When instantiated the factory class needs to be provided with a list of mapping configurations, from there the factory class can be used to to map, using the method call `factoryMapper.Map<TFrom,TTo>(TFrom toMapFrom)`, if it knows how to, otherwise an exception of type `NoMappingExistsException` will be thrown.
+
+To allow easy nesting of Mapping Configurations use the factory, as it will pass itself into the Mapping Configuration, providing access to the full set of mappers.
 
 ##Examples
 
@@ -40,7 +41,8 @@ public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, C
 }
 ```
 
-###Nest Mapping classes using the factory (The initial mapping class must be called via the factory, or MappingFactory() will be null)
+###Nest Mapping classes using the factory 
+*The initial mapping class must be called via the factory, or MappingFactory() will be null*
 ```C#
 public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, Class2>
 {
@@ -49,3 +51,5 @@ public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, C
 	}
 }
 ```
+
+:godmode:
