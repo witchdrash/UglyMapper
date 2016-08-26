@@ -24,8 +24,8 @@ When using the factory class it's very easy to use nested mapping classes.
 public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, Class2>
 {
 	public Class1ToClass2Mapper() {
-		Map(x.FromProperty1).To((y, z) => y.ToProperty1 = z);
-		Map(x.FromProperty2).To((y, z) => y.ToProperty2 = z);
+		Map(x => x.FromProperty1).To((y, z) => y.ToProperty1 = z);
+		Map(x => x.FromProperty2).To((y, z) => y.ToProperty2 = z);
 	}
 }
 ```
