@@ -17,13 +17,13 @@ I will probably extend this further, when I need to use constructors with parame
 When instantiated the factory class needs to be provided with a list of mapping configurations, from there the mapping class can be used to to map, when called it will map, if it knows how to, otherwise an exception of type `NoMappingExistsException` will be thrown.
 When using the factory class it's very easy to use nested mapping classes.
 
-##Examples:
+##Examples
 
 ###A simple mapping class:
 ```C#
 public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, Class2>
 {
-	public Class1ToClass2Mapper {
+	public Class1ToClass2Mapper() {
 		Map(x.FromProperty1).To((y, x) => y.ToProperty1);
 		Map(x.FromProperty2).To((y, x) => y.ToProperty2);
 	}
@@ -34,7 +34,7 @@ public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, C
 ```C#
 public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, Class2>
 {
-	public Class1ToClass2Mapper {
+	public Class1ToClass2Mapper() {
 		ConstructBy(x => new Class2(x.FromProperty1, x.FromProperty2))
 	}
 }
@@ -44,7 +44,7 @@ public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, C
 ```C#
 public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, Class2>
 {
-	public Class1ToClass2Mapper {
+	public Class1ToClass2Mapper() {
 		Map(x => x).To((y, x) => y.HoldsClass3 = MappingFactory().Map<Class1, Class3>(x));
 	}
 }
