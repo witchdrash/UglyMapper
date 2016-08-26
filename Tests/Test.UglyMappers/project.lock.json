@@ -2676,7 +2676,7 @@
           "lib/netstandard1.1/xunit.runner.utility.dotnet.dll": {}
         }
       },
-      "UglyMapper/0.0.3-alpha": {
+      "UglyMapper/0.0.3.1": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v1.0",
         "dependencies": {
@@ -5548,7 +5548,7 @@
           "lib/netstandard1.1/xunit.runner.utility.dotnet.dll": {}
         }
       },
-      "UglyMapper/0.0.3-alpha": {
+      "UglyMapper/0.0.3.1": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v1.0",
         "dependencies": {
@@ -6307,7 +6307,7 @@
           "lib/net45/xunit.runner.utility.desktop.dll": {}
         }
       },
-      "UglyMapper/0.0.3-alpha": {
+      "UglyMapper/0.0.3.1": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.2",
         "dependencies": {
@@ -7019,7 +7019,7 @@
           "lib/net45/xunit.runner.utility.desktop.dll": {}
         }
       },
-      "UglyMapper/0.0.3-alpha": {
+      "UglyMapper/0.0.3.1": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.2",
         "dependencies": {
@@ -12985,7 +12985,7 @@
         "xunit.runner.utility.nuspec"
       ]
     },
-    "UglyMapper/0.0.3-alpha": {
+    "UglyMapper/0.0.3.1": {
       "type": "project",
       "path": "../../Source/UglyMapper/project.json",
       "msbuildProject": "../../Source/UglyMapper/UglyMapper.xproj"

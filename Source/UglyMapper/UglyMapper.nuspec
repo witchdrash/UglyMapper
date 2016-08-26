@@ -4,13 +4,18 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <authors>Owen Ashcroft</authors>
+    <owners>Owen Ashcroft</owners>
     <licenseUrl>https://github.com/witchdrash/UglyMapper</licenseUrl>
     <projectUrl>https://github.com/witchdrash/UglyMapper</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>A quick, trivial, object mapper. Allows you to map property to property, or call specific constructors. Safe for IOC, and refactoring.</summary>
     <description>$description$</description>
-    <releaseNotes>Moved over to xproj and enabled dot net core</releaseNotes>
-    <copyright>Copyright 2016</copyright>
+    <releaseNotes>
+      Found some IOC containers went into an infinite loop when trying to use the factory class with a mapping class that the factory class was injected into, this has led to a change in how the factory class is passed in to the mapping class.
+
+      This means a class called from the factory class has access to its parent factory.
+    </releaseNotes>
+    <copyright>Unlicense</copyright>
   </metadata>
 </package>

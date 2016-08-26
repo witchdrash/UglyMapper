@@ -6,22 +6,27 @@ using Xunit;
 
 namespace Tests
 {
+    public class StubMapping : BaseMapperConfiguration<SimpleFrom, SimpleTo>
+    {
+        public StubMapping()
+        {
+            Map(x => x.InProperty).To((y, x) => y.OutProperty = x);
+        }
+
+        public IUglyMappingFactory ExposeFactory => MappingFactory();
+    }
+
     public class TestUglyMappingFactory
     {
         [Fact]
         public void WhenAMappingEngineExistsTheObjectIsMapped()
         {
 
-            var mock = new Moq.Mock<IUglyMapperConfiguration>();
-            
-            mock.Setup(x => x.IsValid<int, string>()).Returns(true);
-            mock.Setup(x => x.Map<int, string>(10)).Returns("hello");
+            var classUnderTest = new UglyMappingFactory(new List<IUglyMapperConfiguration> { new StubMapping() });
 
-            var classUnderTest = new UglyMappingFactory(new List<IUglyMapperConfiguration> { mock.Object });
+            var result = classUnderTest.Map<SimpleFrom, SimpleTo>(new SimpleFrom {InProperty = "hello"});
 
-            var result = classUnderTest.Map<int, string>(10);
-
-            Assert.Equal("hello", result);
+            Assert.Equal("hello", result.OutProperty);
         }
 
         [Fact]
@@ -33,6 +38,21 @@ namespace Tests
             {
                 classUnderTest.Map<int, string>(10);
             });
+        }
+
+        /// <summary>
+        /// This fixes a stack overflow exception caused by some IOC containers trying to resolve dependencies
+        /// </summary>
+        [Fact]
+        public void WhenAnUglyMapperIsCalledViaTheFactoryTheFactoryPassesItselfIntoTheFactory()
+        {
+            
+            var mapperConfiguration = new StubMapping();
+            var classUnderTest = new UglyMappingFactory(new List<IUglyMapperConfiguration> { mapperConfiguration });
+
+           classUnderTest.Map<SimpleFrom, SimpleTo>(new SimpleFrom { InProperty =  "xasd" });
+
+            Assert.Same(classUnderTest, mapperConfiguration.ExposeFactory);
         }
     }
 }

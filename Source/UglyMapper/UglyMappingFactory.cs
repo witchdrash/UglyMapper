@@ -17,10 +17,11 @@ namespace UglyMapper
         public TTo Map<TFrom, TTo>(TFrom from)
         {
             var mapperConfiguration = _mappingConfigurations.FirstOrDefault(x => x.IsValid<TFrom, TTo>());
-
+            
             if (mapperConfiguration == null)
                 throw new NoMappingExistsException<TFrom, TTo>();
 
+            ((BaseMapperConfiguration<TFrom, TTo>)mapperConfiguration).SetMappingFactory(this);
             return mapperConfiguration.Map<TFrom, TTo>(from);
         }
     }

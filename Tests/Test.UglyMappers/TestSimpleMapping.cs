@@ -22,7 +22,6 @@ namespace Tests
         }
     }
 
-    
     public class TestSimpleMapping 
     {
         [Fact]
