@@ -13,6 +13,9 @@ This will instantiate the object using a parameterless constructor.
 
 I will probably extend this further, when I need to use constructors with parameters, or to nest configurations.
 
+##Factory Class
+When instantiated the factory class needs to be provided with a list of mapping configurations, from there the mapping class can be used to to map, when called it will map, if it knows how to, otherwise an exception of type `NoMappingExistsException` will be thrown.
+When using the factory class it's very easy to use nested mapping classes.
 
 ##Examples:
 
