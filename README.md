@@ -7,7 +7,7 @@ It's safe for IOC, It's safe for refactoring, and it's pretty trivial.
 
 It's really simple to use, in the constructor of the mapping class inherit BaseMapperConfiguration specifying the To and From types, then use the set the commands
 
-Map(From => From.Property).To(To => (To, FromProp) => { To.PropertyToMapTo = FromProp; })
+`Map(From => From.Property).To((ToObject, FromValue) => { ToObject.PropertyToMapTo = FromValue; })`
 
 This will instantiate the object using a parameterless constructor.
 
