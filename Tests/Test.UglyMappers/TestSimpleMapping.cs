@@ -29,7 +29,7 @@ namespace Tests
         public void MapsCorrectly()
         {
             const string expected = "Stuff in here";
-            var simpleFrom = new SimpleFrom() { InProperty = expected };
+            var simpleFrom = new SimpleFrom { InProperty = expected };
 
             var classUnderTest = new SimpleMapperConfiguration();
             var result = classUnderTest.Map<SimpleFrom, SimpleTo>(simpleFrom);

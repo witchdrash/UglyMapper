@@ -16,6 +16,16 @@ namespace Tests
         public IUglyMappingFactory ExposeFactory => MappingFactory();
     }
 
+    public class StubMapping2 : BaseMapperConfiguration<SimpleFrom, SimpleTo>
+    {
+        public StubMapping2() : base("test instance")
+        {
+            Map(x => x.InProperty).To((y, x) => y.OutProperty = x + "second");
+        }
+
+        public IUglyMappingFactory ExposeFactory => MappingFactory();
+    }
+
     public class TestUglyMappingFactory
     {
         [Fact]
@@ -50,9 +60,23 @@ namespace Tests
             var mapperConfiguration = new StubMapping();
             var classUnderTest = new UglyMappingFactory(new List<IUglyMapperConfiguration> { mapperConfiguration });
 
-           classUnderTest.Map<SimpleFrom, SimpleTo>(new SimpleFrom { InProperty =  "xasd" });
+            classUnderTest.Map<SimpleFrom, SimpleTo>(new SimpleFrom { InProperty =  "xasd" });
 
             Assert.Same(classUnderTest, mapperConfiguration.ExposeFactory);
+        }
+
+        [Fact]
+        public void WhenRequestingASpecificInstanceOfAMapperItIsCalled()
+        {
+            var mapperConfiguration = new StubMapping();
+            var mapperConfiguration2 = new StubMapping2();
+            var classUnderTest = new UglyMappingFactory(new List<IUglyMapperConfiguration> { mapperConfiguration, mapperConfiguration2 });
+
+            var result = classUnderTest.Map<SimpleFrom, SimpleTo>(new SimpleFrom { InProperty = "xasd" });
+            var result2 = classUnderTest.Map<SimpleFrom, SimpleTo>(new SimpleFrom { InProperty = "xasd" }, "test instance");
+
+            Assert.Equal("xasd", result.OutProperty);
+            Assert.Equal("xasdsecond", result2.OutProperty);
         }
     }
 }

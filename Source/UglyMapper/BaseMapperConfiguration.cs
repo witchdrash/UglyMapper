@@ -7,19 +7,22 @@ namespace UglyMapper
 {
     public abstract class BaseMapperConfiguration<TFrom, TTo> : IUglyMapperConfiguration
     {
+        private readonly string _instanceName;
         readonly List<IMappingAction<TFrom, TTo>> _mappingActions = new List<IMappingAction<TFrom, TTo>>();
         private Func<TFrom, TTo> _constructor;
-        private IUglyMappingFactory _mappingFactory = null;
-
-        protected BaseMapperConfiguration()
+        private IUglyMappingFactory _mappingFactory;
+        
+        protected BaseMapperConfiguration(string instanceName = "__default__")
         {
-            _constructor = (x) => Activator.CreateInstance<TTo>();
+            _instanceName = instanceName;
+            _constructor = x => Activator.CreateInstance<TTo>();
         }
 
-        public bool IsValid<TTestFrom, TTestTo>()
+        public bool IsValid<TTestFrom, TTestTo>(string instance = "__default__")
         {
             return typeof(TFrom) == typeof(TTestFrom)
-                   && typeof(TTo) == typeof(TTestTo);
+                   && typeof(TTo) == typeof(TTestTo)
+                   && _instanceName == instance;
         }
 
         protected void ConstructBy(Func<TFrom, TTo> func)
@@ -27,9 +30,9 @@ namespace UglyMapper
             _constructor = func;
         }
 
-        public TMapTo Map<TMapFrom, TMapTo>(TMapFrom from)
+        public TMapTo Map<TMapFrom, TMapTo>(TMapFrom from, string instanceName = "__default__")
         {
-            if (!IsValid<TMapFrom, TMapTo>())
+            if (!IsValid<TMapFrom, TMapTo>(instanceName))
                 throw new InvalidMapperException<TFrom, TTo, TMapFrom, TMapTo>();
 
             var castFrom = (TFrom)(object)from;
