@@ -66,7 +66,7 @@ public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, C
 	}
 }
 ```
-This can then be called by calling ```Mapping.Map<TFrom, Tto>(fromObject, "First")``` or ```Mapping.Map<TFrom, Tto>(fromObject, "Second")```.
+This can then be called by calling ```C#Mapping.Map<TFrom, Tto>(fromObject, "First")``` or ```Mapping.Map<TFrom, Tto>(fromObject, "Second")```.
 If no alias is added it will call a default one (if registered), which would be a mapper registered without a call to the base from its constructor. 
 
 :godmode:
