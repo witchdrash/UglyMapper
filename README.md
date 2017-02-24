@@ -51,5 +51,22 @@ public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, C
 	}
 }
 ```
+###Alias multiple mappings (24 Feb 2017)
+It is not possible to have multiple mappings within the same factory by aliasing different versions.
+```C#
+public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, Class2>{
+	public Class1ToClass2Mapper():base("First") {
+	...
+	}
+}
+
+public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, Class2>{
+	public Class1ToClass2Mapper():base("Second") {
+	...
+	}
+}
+```
+This can then be called by calling ```Mapping.Map<TFrom, Tto>(fromObject, "First")``` or ```Mapping.Map<TFrom, Tto>(fromObject, "Second")```.
+If no alias is added it will call a default one (if registered), which would be a mapper registered without a call to the base from its constructor. 
 
 :godmode:
