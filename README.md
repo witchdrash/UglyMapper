@@ -52,7 +52,7 @@ public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, C
 }
 ```
 ###Alias multiple mappings (24 Feb 2017)
-It is not possible to have multiple mappings within the same factory by aliasing different versions.
+It is now possible to have multiple mappings within the same factory by aliasing different versions, previously registering multiple mappings would have resulted in only the first registered ever being called.
 ```C#
 public class Class1ToClass2Mapper : UglyMapper.BaseMapperConfiguration<Class1, Class2>{
 	public Class1ToClass2Mapper():base("First") {
