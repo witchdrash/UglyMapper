@@ -12,9 +12,7 @@
     <summary>A quick, trivial, object mapper. Allows you to map property to property, or call specific constructors. Safe for IOC, and refactoring.</summary>
     <description>$description$</description>
     <releaseNotes>
-      Found some IOC containers went into an infinite loop when trying to use the factory class with a mapping class that the factory class was injected into, this has led to a change in how the factory class is passed in to the mapping class.
-
-      This means a class called from the factory class has access to its parent factory.
+      Enabled multiple implementations of the same mapping, you can use an instance key to differentiate between them.
     </releaseNotes>
     <copyright>Unlicense</copyright>
   </metadata>

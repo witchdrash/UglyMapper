@@ -42,7 +42,7 @@ namespace Tests
             var simpleFrom = new ConstructorFrom() { InProperty = expected };
 
             var classUnderTest = new ConstructorMapper();
-            var result = classUnderTest.Map<ConstructorFrom, ConstructorTo>(simpleFrom);
+            var result = classUnderTest.Map(simpleFrom);
             Assert.Equal(expected, result.OutProperty);
         }
 
@@ -54,7 +54,7 @@ namespace Tests
             var simpleFrom = new ConstructorFrom() { InProperty = expected, PropertyTwo = secondExpected};
 
             var classUnderTest = new ConstructorMapper();
-            var result = classUnderTest.Map<ConstructorFrom, ConstructorTo>(simpleFrom);
+            var result = classUnderTest.Map(simpleFrom);
             Assert.Equal(expected, result.OutProperty);
             Assert.Equal(secondExpected, result.SecondProperty);
         }

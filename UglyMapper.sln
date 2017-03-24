@@ -1,20 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "UglyMapper", "Source\UglyMapper\UglyMapper.xproj", "{6419F9A1-7369-4CCB-83F8-F374ACE64F66}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Tests", "_Tests", "{951C59E1-F4D2-446B-88F8-F3F3C59BB5B6}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Test.UglyMappers", "Tests\Test.UglyMappers\Test.UglyMappers.xproj", "{1E501452-A3E6-4D54-B420-6C4D2820A188}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F7B3F29B-5BEC-4EFB-975E-4DD558BFFDBD}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
 		gulpfile.js = gulpfile.js
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UglyMapper", "Source\UglyMapper\UglyMapper.csproj", "{6419F9A1-7369-4CCB-83F8-F374ACE64F66}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.UglyMappers", "Tests\Test.UglyMappers\Test.UglyMappers.csproj", "{1E501452-A3E6-4D54-B420-6C4D2820A188}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

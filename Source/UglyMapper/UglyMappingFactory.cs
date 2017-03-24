@@ -22,7 +22,7 @@ namespace UglyMapper
                 throw new NoMappingExistsException<TFrom, TTo>();
 
             ((BaseMapperConfiguration<TFrom, TTo>)mapperConfiguration).SetMappingFactory(this);
-            return mapperConfiguration.Map<TFrom, TTo>(from, instance);
+            return ((BaseMapperConfiguration<TFrom, TTo>)mapperConfiguration).Map(from, instance);
         }
 
         public TTo Map<TFrom, TTo>(TFrom from)
@@ -33,7 +33,7 @@ namespace UglyMapper
                 throw new NoMappingExistsException<TFrom, TTo>();
 
             ((BaseMapperConfiguration<TFrom, TTo>)mapperConfiguration).SetMappingFactory(this);
-            return mapperConfiguration.Map<TFrom, TTo>(from);
+            return ((BaseMapperConfiguration<TFrom, TTo>)mapperConfiguration).Map(from);
         }
     }
 }

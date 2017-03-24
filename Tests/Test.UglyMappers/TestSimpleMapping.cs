@@ -15,11 +15,21 @@ namespace Tests
         public string OutProperty { get; set; }
     }
 
-    public class SimpleMapperConfiguration : BaseMapperConfiguration<SimpleFrom, SimpleTo>
+    public interface ISimpleMapperConfiguration
+    {
+        SimpleTo Map(SimpleFrom from);
+    }
+
+    public class SimpleMapperConfiguration : BaseMapperConfiguration<SimpleFrom, SimpleTo>, ISimpleMapperConfiguration
     {
         public SimpleMapperConfiguration()
         {
             Map(x => x.InProperty).To((x,y) => { x.OutProperty = y; });
+        }
+
+        public SimpleTo Map(SimpleFrom @from)
+        {
+            return base.Map(from);
         }
     }
 
@@ -32,7 +42,7 @@ namespace Tests
             var simpleFrom = new SimpleFrom { InProperty = expected };
 
             var classUnderTest = new SimpleMapperConfiguration();
-            var result = classUnderTest.Map<SimpleFrom, SimpleTo>(simpleFrom);
+            var result = classUnderTest.Map(simpleFrom);
             Assert.Equal(expected, result.OutProperty);
         }
 
@@ -70,7 +80,7 @@ namespace Tests
             Assert.Throws<UnsupportedNestedConfigurationException>(() =>
             {
                 var classUnderTest = new NestedMappingConfiguration();
-                classUnderTest.Map<SimpleTo, SimpleFrom>(new SimpleTo());
+                classUnderTest.Map(new SimpleTo());
             });
         }
     }

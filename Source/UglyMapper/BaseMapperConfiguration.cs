@@ -30,18 +30,13 @@ namespace UglyMapper
             _constructor = func;
         }
 
-        public TMapTo Map<TMapFrom, TMapTo>(TMapFrom from, string instanceName = "__default__")
+        public TTo Map(TFrom from, string instanceName = "__default__")
         {
-            if (!IsValid<TMapFrom, TMapTo>(instanceName))
-                throw new InvalidMapperException<TFrom, TTo, TMapFrom, TMapTo>();
+            var toObject = _constructor(from);
 
-            var castFrom = (TFrom)(object)from;
+            _mappingActions.ForEach(x => x.Execute(from, toObject));
 
-            var toObject = _constructor(castFrom);
-
-            _mappingActions.ForEach(x => x.Execute(castFrom, toObject));
-
-            return (TMapTo)(object)toObject;
+            return toObject;
         }
 
         protected MappingAction<TFrom, TTo, TMapType> Map<TMapType>(Func<TFrom, TMapType> action)

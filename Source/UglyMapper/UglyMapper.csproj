@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Copyright>UNLICENSE</Copyright>
+    <AssemblyTitle>Uglymapper</AssemblyTitle>
+    <VersionPrefix>0.1.1</VersionPrefix>
+    <TargetFrameworks>netcoreapp1.0;net452;netstandard1.6</TargetFrameworks>
+    <AssemblyName>UglyMapper</AssemblyName>
+    <PackageId>UglyMapper</PackageId>
+    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <Version>0.2</Version>
+    <Description>Mapping library</Description>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>
