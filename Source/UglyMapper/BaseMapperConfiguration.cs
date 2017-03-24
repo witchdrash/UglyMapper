@@ -39,6 +39,19 @@ namespace UglyMapper
             return toObject;
         }
 
+        [Obsolete("This will be removed in future version, please use TTo Map(TFrom from)")]
+        public TConvTo Map<TConvFrom, TConvTo>(TConvFrom from, string instanceName = "__default__")
+        {
+            if (!IsValid<TConvFrom, TConvTo>(instanceName))
+                throw new InvalidMapperException<TFrom, TTo, TConvFrom, TConvTo>();
+
+            var toObject = _constructor((TFrom)(object)from);
+
+            _mappingActions.ForEach(x => x.Execute((TFrom)(object)from, toObject));
+
+            return (TConvTo)(object)toObject;
+        }
+
         protected MappingAction<TFrom, TTo, TMapType> Map<TMapType>(Func<TFrom, TMapType> action)
         {
             var mappingAction = new MappingAction<TFrom, TTo, TMapType>(action);
