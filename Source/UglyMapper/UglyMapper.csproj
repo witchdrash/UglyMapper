@@ -13,10 +13,15 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>0.2.0.1</Version>
+    <Version>0.2.0.2</Version>
     <Description>Mapping library</Description>
-    <AssemblyVersion>0.2.0.1</AssemblyVersion>
-    <FileVersion>0.2.0.1</FileVersion>
+    <AssemblyVersion>0.2.0.2</AssemblyVersion>
+    <FileVersion>0.2.0.2</FileVersion>
+    <RepositoryUrl>https://github.com/witchdrash/UglyMapper</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageReleaseNotes>Switching from pre-release to full release</PackageReleaseNotes>
+    <Authors>Owen Ashcroft (WitchDrAsh)</Authors>
+    <PackageProjectUrl>https://github.com/witchdrash/UglyMapper</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">

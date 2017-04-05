@@ -7,9 +7,9 @@ namespace UglyMapper
 {
     public class UglyMappingFactory : IUglyMappingFactory
     {
-        private readonly List<IUglyMapperConfiguration> _mappingConfigurations;
+        private readonly ICollection<IUglyMapperConfiguration> _mappingConfigurations;
 
-        public UglyMappingFactory(List<IUglyMapperConfiguration> mappingConfigurations)
+        public UglyMappingFactory(ICollection<IUglyMapperConfiguration> mappingConfigurations)
         {
             _mappingConfigurations = mappingConfigurations;
         }
