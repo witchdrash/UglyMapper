@@ -5,7 +5,7 @@ using UglyMapper.Interfaces;
 
 namespace UglyMapper
 {
-    public abstract class BaseMapperConfiguration<TFrom, TTo> : IUglyMapperConfiguration
+    public abstract class BaseMapperConfiguration<TFrom, TTo> : IBaseMapperConfiguration<TFrom, TTo>
     {
         private readonly string _instanceName;
         readonly List<IMappingAction<TFrom, TTo>> _mappingActions = new List<IMappingAction<TFrom, TTo>>();
