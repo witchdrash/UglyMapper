@@ -8,7 +8,7 @@ namespace UglyMapper
     public abstract class BaseMapperConfiguration<TFrom, TTo> : IBaseMapperConfiguration<TFrom, TTo>
     {
         private readonly string _instanceName;
-        readonly List<IMappingAction<TFrom, TTo>> _mappingActions = new List<IMappingAction<TFrom, TTo>>();
+        private readonly List<IMappingAction<TFrom, TTo>> _mappingActions = new List<IMappingAction<TFrom, TTo>>();
         private Func<TFrom, TTo> _constructor;
         private IUglyMappingFactory _mappingFactory;
         
@@ -30,7 +30,7 @@ namespace UglyMapper
             _constructor = func;
         }
 
-        public TTo Map(TFrom from, string instanceName = "__default__")
+        public TTo Map(TFrom from, string instanceName)
         {
             var toObject = _constructor(from);
 
@@ -39,17 +39,9 @@ namespace UglyMapper
             return toObject;
         }
 
-        [Obsolete("This will be removed in future version, please use TTo Map(TFrom from)")]
-        public TConvTo Map<TConvFrom, TConvTo>(TConvFrom from, string instanceName = "__default__")
+        public TTo Map(TFrom from)
         {
-            if (!IsValid<TConvFrom, TConvTo>(instanceName))
-                throw new InvalidMapperException<TFrom, TTo, TConvFrom, TConvTo>();
-
-            var toObject = _constructor((TFrom)(object)from);
-
-            _mappingActions.ForEach(x => x.Execute((TFrom)(object)from, toObject));
-
-            return (TConvTo)(object)toObject;
+            return Map(from, "__default__");
         }
 
         protected MappingAction<TFrom, TTo, TMapType> Map<TMapType>(Func<TFrom, TMapType> action)
