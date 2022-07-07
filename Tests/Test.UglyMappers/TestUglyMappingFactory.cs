@@ -4,7 +4,7 @@ using UglyMapper.Exceptions;
 using UglyMapper.Interfaces;
 using Xunit;
 
-namespace Tests
+namespace Test.UglyMappers
 {
     public class StubMapping : BaseMapperConfiguration<SimpleFrom, SimpleTo>
     {

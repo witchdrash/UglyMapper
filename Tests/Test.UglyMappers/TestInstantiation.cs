@@ -1,8 +1,7 @@
-using System;
 using UglyMapper;
 using Xunit;
 
-namespace Tests
+namespace Test.UglyMappers
 {
 
     public class ConstructorFrom
@@ -13,14 +12,13 @@ namespace Tests
 
     public class ConstructorTo
     {
-        private string _outProperty;
-
         public ConstructorTo(string outProperty)
         {
-            _outProperty = outProperty;
+            OutProperty = outProperty;
         }
 
-        public string OutProperty => _outProperty;
+        public string OutProperty { get; }
+
         public string SecondProperty { get; set; }
     }
 

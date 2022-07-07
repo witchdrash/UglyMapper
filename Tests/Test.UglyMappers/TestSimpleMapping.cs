@@ -3,7 +3,7 @@ using UglyMapper;
 using UglyMapper.Exceptions;
 using Xunit;
 
-namespace Tests
+namespace Test.UglyMappers
 {
     public class SimpleFrom
     {
@@ -25,11 +25,6 @@ namespace Tests
         public SimpleMapperConfiguration()
         {
             Map(x => x.InProperty).To((x,y) => { x.OutProperty = y; });
-        }
-
-        public SimpleTo Map(SimpleFrom @from)
-        {
-            return base.Map(from);
         }
     }
 

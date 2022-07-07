@@ -1,32 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <Copyright>UNLICENSE</Copyright>
-    <AssemblyTitle>Uglymapper</AssemblyTitle>
-    <VersionPrefix>0.1.1</VersionPrefix>
-    <TargetFrameworks>netcoreapp1.0;net452;netstandard1.6</TargetFrameworks>
-    <AssemblyName>UglyMapper</AssemblyName>
-    <PackageId>UglyMapper</PackageId>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
-    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>0.2.0.4</Version>
-    <Description>Mapping library</Description>
-    <AssemblyVersion>0.2.0.3</AssemblyVersion>
-    <FileVersion>0.2.0.3</FileVersion>
-    <RepositoryUrl>https://github.com/witchdrash/UglyMapper</RepositoryUrl>
-    <RepositoryType>Git</RepositoryType>
-    <PackageReleaseNotes>Switching from pre-release to full release</PackageReleaseNotes>
-    <Authors>Owen Ashcroft (WitchDrAsh)</Authors>
-    <PackageProjectUrl>https://github.com/witchdrash/UglyMapper</PackageProjectUrl>
-  </PropertyGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
+	<PropertyGroup>
+		<Copyright>UNLICENSE</Copyright>
+		<AssemblyTitle>Uglymapper</AssemblyTitle>
+		<VersionPrefix>0.1.1</VersionPrefix>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<AssemblyName>UglyMapper</AssemblyName>
+		<PackageId>UglyMapper</PackageId>
+		<RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+		<NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+		<PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<Version>0.3.0.0</Version>
+		<Description>A simple mapping library</Description>
+		<AssemblyVersion>0.2.0.3</AssemblyVersion>
+		<FileVersion>0.2.0.3</FileVersion>
+		<RepositoryUrl>https://github.com/witchdrash/UglyMapper</RepositoryUrl>
+		<RepositoryType>Git</RepositoryType>
+		<PackageReleaseNotes>Switching from pre-release to full release</PackageReleaseNotes>
+		<Authors>Owen Ashcroft (WitchDrAsh)</Authors>
+		<PackageProjectUrl>https://github.com/witchdrash/UglyMapper</PackageProjectUrl>
+	</PropertyGroup>
 
 </Project>
